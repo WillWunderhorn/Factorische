@@ -1,0 +1,127 @@
+{
+"card": [
+  {
+    "id": 1,
+    "category": "test",
+    "rarity": "common",
+    "description": "test1",
+    "isActive": true,
+    "isQueued": false,
+    "isDisposable": false,
+    "options": [
+      {
+        "id": 1,
+        "description": "action1 (-100$)",
+        "requirements": {
+          "stats": {
+            "budget": 100
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "budget": -100
+          }
+        }
+      },
+      {
+        "id": 2,
+        "description": "action2 (+100$)",
+        "requirements": {
+          "stats": {
+            "budget": 100
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "budget": 100
+          },
+          "multipliers_delta": {
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "test",
+    "rarity": "common",
+    "description": "test2",
+    "isActive": true,
+    "isQueued": false,
+    "isDisposable": false,
+    "options": [
+      {
+        "id": 1,
+        "description": "action1 (rep_wrk -1)",
+        "requirements": {
+          "stats": {
+            "rep_wrk": 1
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "rep_wrk": -1
+          }
+        }
+      },
+      {
+        "id": 2,
+        "description": "action2 (rep_wrk +1)",
+        "requirements": {
+          "stats": {
+            "rep_wrk": 1
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "rep_wrk": -1
+          },
+          "multipliers_delta": {
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "test",
+    "rarity": "common",
+    "description": "test3",
+    "isActive": true,
+    "isQueued": false,
+    "isDisposable": false,
+    "options": [
+      {
+        "id": 1,
+        "description": "action1 (rep_wrk -1)",
+        "requirements": {
+          "stats": {
+            "rep_wrk": 1
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "rep_wrk": -1
+          }
+        }
+      },
+      {
+        "id": 2,
+        "description": "action2 (rep_wrk +1)",
+        "requirements": {
+          "stats": {
+            "rep_wrk": 1
+          }
+        },
+        "results": {
+          "stats_delta": {
+            "rep_wrk": -1
+          },
+          "multipliers_delta": {
+          }
+        }
+      }
+    ]
+  }
+]
+}
