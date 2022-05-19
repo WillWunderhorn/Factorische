@@ -1,3 +1,6 @@
+import JsonParsing.GsonParser;
+import JsonParsing.Root;
+
 public class Game {
     private static Game game;
     public static int day;
@@ -29,27 +32,21 @@ public class Game {
     public static int getBudget() {
         return budget;
     }
-
     public int getDay() {
         return day;
     }
-
     public int getRep_wrk() {
         return rep_wrk;
     }
-
     public static int getRep_civ() {
         return rep_civ;
     }
-
     public int getRep_gov() {
         return rep_gov;
     }
-
     public int getEfficiency() {
         return efficiency;
     }
-
     public int getManpower() {
         return manpower;
     }
@@ -59,15 +56,18 @@ public class Game {
     }
 
     public void start(){
+        GsonParser parser = new GsonParser();
+        Root root = parser.parse();
         while (!GameOver.Over()){
             this.day++;
             showInfo();
-            Choice.choice();
+            System.out.println(root.toString());
+//          Choice.choice();
+            budget -= 200;
         }
     }
 
     public void showInfo(){
-
         System.out.println(
                 "--------------------------------------------------"
                 + "\n"
@@ -78,7 +78,6 @@ public class Game {
                 + "\n" + "Rep_civ: " + "[" + "▮".repeat((rep_civ)/10) + "▯".repeat(10-(rep_civ)/10) + "]"
                 + "\n" + "Rep_civ: " + "[" + "▮".repeat((rep_gov)/10) + "▯".repeat(10-(rep_gov)/10) + "]"
                 + "\n"
-
         );
     }
 }
