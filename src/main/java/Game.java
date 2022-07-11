@@ -1,6 +1,3 @@
-import JsonParsing.GsonParser;
-import JsonParsing.Root;
-
 public class Game {
     private static Game game;
     public static int day;
@@ -26,9 +23,12 @@ public class Game {
         this.rep_gov = rep_gov;
         this.efficiency = efficiency;
         this.manpower = manpower;
-
     }
 
+    public void start(){
+        DailyLoop.dailyLoop();
+
+    }
     public static int getBudget() {
         return budget;
     }
@@ -50,34 +50,8 @@ public class Game {
     public int getManpower() {
         return manpower;
     }
-
     public static void setBudget(int budget) {
         Game.budget = budget;
     }
 
-    public void start(){
-        GsonParser parser = new GsonParser();
-        Root root = parser.parse();
-        while (!GameOver.Over()){
-            this.day++;
-            showInfo();
-            System.out.println(root.toString());
-//          Choice.choice();
-            budget -= 200;
-        }
-    }
-
-    public void showInfo(){
-        System.out.println(
-                "--------------------------------------------------"
-                + "\n"
-                + "Day: " + day + " | " + "efficiency: " + efficiency + " | " + "manpower: " + manpower + "\n"
-                + "\n"
-                + "Budget: " + budget
-                + "\n" + "Rep_wrk: " + "[" + "▮".repeat((rep_wrk)/10) + "▯".repeat(10-(rep_wrk)/10) + "]"
-                + "\n" + "Rep_civ: " + "[" + "▮".repeat((rep_civ)/10) + "▯".repeat(10-(rep_civ)/10) + "]"
-                + "\n" + "Rep_civ: " + "[" + "▮".repeat((rep_gov)/10) + "▯".repeat(10-(rep_gov)/10) + "]"
-                + "\n"
-        );
-    }
 }
