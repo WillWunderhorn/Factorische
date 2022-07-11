@@ -10,7 +10,7 @@ public class Game {
 
     public static synchronized Game getGame(){
         if(game == null){
-            game = new Game(0, 1000, 50, 50,50, 50, 100);
+            game = new Game(0, 100000, 50, 50,50, 50, 100);
         }
         return game;
     }

@@ -32,24 +32,18 @@ public class Cards {
         }
 
         int id;
-        String rarity;
         String description;
         boolean isDisposable;
         Scanner sc = new Scanner(System.in);
 
         public Card_0() {
             this.id = 0;
-            this.rarity = "common";
             this.description = "На заводе закончились расходники, купить еще?";
             this.isDisposable = false;
         }
 
         public int getId() {
             return id;
-        }
-
-        public String getRarity() {
-            return rarity;
         }
 
         public boolean isDisposable() {
@@ -69,6 +63,7 @@ public class Cards {
             switch (askOption){
                 case 1: option1(); break;
                 case 2: option2(); break;
+                default: noSuchACard(); break;
             }
         }
 
@@ -79,11 +74,15 @@ public class Cards {
             Game.rep_wrk -= 20;
             System.out.println("Работники на вас обиделись");
         }
+        public void noSuchACard(){
+            System.out.println("Такого варианта нет!");
+            System.out.println(deck.get(id));
+        }
 
         @Override
         public String toString() {
             selectOption();
-            return "id=" + id;
+            return "";
         }
     }
 
@@ -100,24 +99,18 @@ public class Cards {
             }
 
             int id;
-            String rarity;
             String description;
             boolean isDisposable;
             Scanner sc = new Scanner(System.in);
 
             public Card_1() {
                 this.id = 1;
-                this.rarity = "common";
                 this.description = "К вам пришли с подарками";
                 this.isDisposable = false;
             }
 
             public int getId() {
                 return id;
-            }
-
-            public String getRarity() {
-                return rarity;
             }
 
             public boolean isDisposable() {
@@ -137,6 +130,7 @@ public class Cards {
                 switch (askOption){
                     case 1: option1(); break;
                     case 2: option2(); break;
+                    default: noSuchACard(); break;
                 }
             }
 
@@ -147,11 +141,15 @@ public class Cards {
             public void option2(){
                 System.out.println("Вы вежливо отказались");
             }
+            public void noSuchACard(){
+                System.out.println("Такого варианта нет!");
+                System.out.println(deck.get(id));
+            }
 
             @Override
             public String toString() {
                 selectOption();
-                return "id=" + id;
+                return "";
             }
 
         }
