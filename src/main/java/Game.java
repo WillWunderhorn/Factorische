@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Game {
     private static Game game;
     public static int day;
@@ -8,12 +10,18 @@ public class Game {
     public static int efficiency;
     public static int manpower;
 
-    public static synchronized Game getGame(){
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String GREEN_BRIGHT = "\033[0;92m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    public static synchronized Game getGame() {
         if(game == null){
-            game = new Game(0, 100000, 50, 50,50, 50, 100);
+            DailyLoop.setEfficiency();
+            game = new Game(0, 1000, 50, 50,50, efficiency, manpower);
         }
         return game;
     }
+
 
     public Game(int day, int budget, int rep_wrk, int rep_civ, int rep_gov, int efficiency, int manpower) {
         this.day = day;
@@ -21,11 +29,11 @@ public class Game {
         this.rep_wrk = rep_wrk;
         this.rep_civ = rep_civ;
         this.rep_gov = rep_gov;
-        this.efficiency = efficiency;
-        this.manpower = manpower;
+        this.efficiency = 0;
+        this.manpower = 0;
     }
 
-    public void start(){
+    public void start() throws InterruptedException {
         DailyLoop.dailyLoop();
 
     }

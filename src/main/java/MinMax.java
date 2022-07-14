@@ -13,4 +13,9 @@ public class MinMax {
             Game.rep_civ = 100;
         }
     }
+    public static void checkEffManMinMax(){
+        if (Game.efficiency > 100){
+            Game.efficiency = 100;
+        }
+    }
 }
