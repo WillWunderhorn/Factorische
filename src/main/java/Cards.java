@@ -5,6 +5,7 @@ public class Cards {
     static Card_0 card_0;
     static Card_1 card_1;
     static Card_2 card_2;
+    static Card_3 card_3;
 
     public static ArrayList<Cards> deck = new ArrayList();
 
@@ -12,10 +13,12 @@ public class Cards {
         Card_0 card_0 = new Card_0();
         Card_1 card_1 = new Card_1();
         Card_2 card_2 = new Card_2();
+        Card_3 card_3 = new Card_3();
 
         deck.add(card_0);
         deck.add(card_1);
         deck.add(card_2);
+        deck.add(card_3);
     }
 
     public static void returnRandomCard() {
@@ -245,6 +248,7 @@ public class Cards {
                 Inventory.inventory.add(Inventory.items.JOURNAL);
                 Inventory.inventory.add(Inventory.items.MAP);
                 Inventory.inventory.add(Inventory.items.NEWSPAPER);
+                Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
 
                 Inventory.inventory.add(Inventory.items.GOLDEN_BAR);
                 Inventory.inventory.add(Inventory.items.SILVER_WRING);
@@ -291,4 +295,80 @@ public class Cards {
                 return "";
             }
         }
+        //=========================================================================
+        static class Card_3 extends Cards {
+
+            public static synchronized Cards getCard(){
+                if(card_3 == null){
+                    Card_3 card_3 = new Card_3();
+                    card_3.selectOption();
+                }
+                return card_3;
+            }
+
+            int id;
+            String description;
+            boolean isDisposable;
+            Scanner sc = new Scanner(System.in);
+
+            public Card_3() {
+                this.id = 1;
+                this.description = "Кажется кто то забыл свою игрушку на вашем заводе, не могли бы вы ее разыскать?";
+                this.isDisposable = true;
+            }
+
+            public int getId() {
+                return id;
+            }
+
+            public boolean isDisposable() {
+                return isDisposable;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void checkDisposable(){
+                if (isDisposable == true){
+                    deck.remove(this.id);
+                }
+            }
+
+            public void selectOption() {
+                System.out.println(this.description);
+                System.out.println("0 - открыть меню\n1 - Хорошо");
+
+                String askOption = sc.nextLine();
+
+                switch (askOption){
+                    case "1": option1(); break;
+                    case "0": option3(); break;
+                    default: noSuchACard(); break;
+                }
+                checkDisposable();
+            }
+
+            public void option1(){
+                Tasks.plushyToy();
+                checkDisposable();
+            }
+            public void option3(){
+                Menu.openMenu();
+                System.out.println(deck.get(id));
+            }
+            public void noSuchACard(){
+                System.out.println("Такого варианта нет!");
+                System.out.println(deck.get(id));
+            }
+
+            @Override
+            public String toString() {
+                selectOption();
+                return "";
+            }
+
+        }
+
+
 }

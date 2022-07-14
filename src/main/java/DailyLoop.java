@@ -29,7 +29,7 @@ public class DailyLoop{
     }
 
     public static void setEfficiency(){
-        int randomEfficiency = -7 + rnd.nextInt(7 - (-4) + 1);
+        int randomEfficiency = -4 + rnd.nextInt(7 - (-4) + 1);
         Game.efficiency = (Game.manpower/2 + (Game.rep_wrk + randomEfficiency)/2);
         MinMax.checkEffManMinMax();
         DailyLoop.setManpower();

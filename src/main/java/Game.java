@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Game {
     private static Game game;
     public static int day;
@@ -9,6 +7,7 @@ public class Game {
     public static int rep_gov;
     public static int efficiency;
     public static int manpower;
+    public static Menu.weather weather;
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String GREEN_BRIGHT = "\033[0;92m";
@@ -21,6 +20,7 @@ public class Game {
         }
         return game;
     }
+
 
 
     public Game(int day, int budget, int rep_wrk, int rep_civ, int rep_gov, int efficiency, int manpower) {
@@ -40,7 +40,7 @@ public class Game {
     public static int getBudget() {
         return budget;
     }
-    public int getDay() {
+    public static int getDay() {
         return day;
     }
     public int getRep_wrk() {

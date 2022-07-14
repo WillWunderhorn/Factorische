@@ -1,48 +1,138 @@
 import java.util.Scanner;
 
 public class Menu {
-    public static String dayOfWeek;
+
+    public enum weather{
+        SUNNY,
+        FOG,
+        CLOUDY,
+        THUNDERSTORM,
+    }
     static Scanner sc = new Scanner(System.in);
 
     public static void getDayOfWeek(){
-        switch (dayOfWeek){
-            case Game.day = 0: dayOfWeek = "sunday";
+        int dayIndex = Game.getDay() - 1;
+        if(Game.getDay() % 8 == 0){
+            dayIndex = 0;
         }
-        if(Game.day % 1 == 0){
-            dayOfWeek = "sunday";
+        if (dayIndex == 0){
+            System.out.println("|Понедельник            |");
+        }
+        if (dayIndex == 1){
+            System.out.println("|Вторник                |");
+        }
+        if (dayIndex == 2){
+            System.out.println("|Среда                  |");
+        }
+        if (dayIndex == 3){
+            System.out.println("|Четверг                |");
+        }
+        if (dayIndex == 4){
+            System.out.println("|Пятница                |");
+        }
+        if (dayIndex == 5){
+            System.out.println("|Суббота                |");
+        }
+        if (dayIndex == 6){
+            System.out.println("|Воскресенье            |");
         }
     }
 
+
     public static void openMenu(){
-        System.out.println("|=======================|\n" +
-                           "|         МЕНЮ:         |"
+        System.out.println();
 
-
+        System.out.println(
+                "|=======================|\n" +
+                "|==--   * МЕНЮ: *   --==|\n" +
+                "|=======================|\n" +
+                "|                       |"
         );
+        getDayOfWeek();
+        System.out.println(
+                "|                       |");
         Menu.openInventory();
-        System.out.println("0 - закрыть меню");
-        String menuActions = sc.nextLine();
-        switch (menuActions){
-            case "3": closeMenu(); break;
-        }
+            System.out.println("0 - закрыть меню\nt - список задач");
+            String menuActions = sc.nextLine();
+            switch (menuActions){
+                case "0": closeMenu(); break;
+                case "t": openTasks(); break;
+                default: System.out.println("Такого варианта нет!");
+                openMenu();
+            }
+
     }
 
     public static void closeMenu(){
-        System.out.println("меню закрыто");
+        System.out.println("меню закрыто\n");
     }
 
     public static void openInventory(){
         System.out.println("|   --- Инвентарь ---   |");
         if(Inventory.inventory.size() == 0){
-            System.out.println("|инвентарь пуст...      |");
+            System.out.println("|    инвентарь пуст(    |");
         }else if(Inventory.inventory.size() != 0){
             Inventory.showInventoryItems();
         }
-        System.out.println("|                       |\n" +
-                           "|                       |\n" +
-                           "|                       |\n" +
-                           "|                       |\n" +
-                           "|                       |\n" );
+        System.out.println(
+                "|                       |\n" +
+                        "|=========-***-=========|\n" );
+    }
+//======================================================================================================================
+
+    public static void checkTask(){
+        if (Tasks.tasks.contains(Tasks.tasksList.TOY) && Tasks.wolfCompleted == false){
+            System.out.println("| Найти игрушку ☐       |");
+            if((Inventory.inventory.contains(Inventory.items.PLUSHY_WOLF))){
+                System.out.println(
+                        "|1 - отдать             |\n" +
+                        "|=========-***-=========|");
+                String askOption = sc.nextLine();
+
+                switch (askOption){
+                    case "1": option1(); break;
+                    default: System.out.println("Такого варианта нет!");
+                }
+            }
+        }
+        else if (Tasks.tasks.contains(Tasks.tasksList.TOY) && Tasks.wolfCompleted == true){
+            System.out.println("|Вы нашли волчицу! ☑    |");
+        }
+    }
+
+    private static void option1() {
+        Inventory.inventory.remove(Inventory.items.PLUSHY_WOLF);
+        Tasks.wolfCompleted = true;
+        System.out.println("|Вы отдали волчицу...   |");
+        Game.rep_civ += 10;
+        Game.rep_wrk += 10;
+    }
+
+
+    public static void openTasks(){
+        System.out.println(
+                        "|=======================|\n" +
+                        "|==--  * ЗАДАЧИ: *  --==|\n" +
+                        "|=======================|\n" +
+                        "|                       |"
+        );
+        checkTask();
+        System.out.println(
+                        "|                       |\n" +
+                        "|=========-***-=========|\n");
+
+        System.out.println("t - закрыть список задач");
+        String tasksActions = sc.nextLine();
+        switch (tasksActions){
+            case "t": closeTask(); break;
+            default: System.out.println("Такого варианта нет!");
+            openTasks();
+        }
+    }
+
+    public static void closeTask(){
+        System.out.println("список задач закрыт");
+        openMenu();
     }
 
 }

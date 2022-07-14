@@ -16,6 +16,9 @@ public class Inventory {
             if(Inventory.inventory.contains(items.NEWSPAPER)){
                 System.out.println("| газета от " + timeStamp + "|");
             }
+        if(Inventory.inventory.contains(items.PLUSHY_WOLF)){
+            System.out.println("| плюшевая волчица      |");
+        }
             if(Inventory.inventory.contains(items.GOLDEN_BAR)){
                 System.out.println("| золотой слиток        |");
             }
@@ -84,6 +87,7 @@ public class Inventory {
         JOURNAL,
         MAP,
         NEWSPAPER,
+        PLUSHY_WOLF,
 
         //      ======================== money:
         GOLDEN_BAR,
