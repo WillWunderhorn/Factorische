@@ -1,83 +1,88 @@
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Scanner;
+import java.util.*;
 
 public class Inventory {
-    static ArrayList<items> inventory = new ArrayList<>();
-    static String timeStamp = new SimpleDateFormat("(dd_MM_yyyy)").format(Calendar.getInstance().getTime());
+    static Map<Enum<items>, Integer> inventory = new HashMap() {
+    };
+    static String timeStamp = new SimpleDateFormat("dd.MM.yyyy  ").format(Calendar.getInstance().getTime());
     public static void showInventoryItems(){
-            if(Inventory.inventory.contains(items.JOURNAL)){
-                System.out.println("| журнал                |");
+            if(Inventory.inventory.containsKey(items.JOURNAL) ){
+                System.out.println("| журнал                |" );
             }
-            if(Inventory.inventory.contains(items.MAP)){
-                System.out.println("| карта                 |");
+            if(Inventory.inventory.containsKey(items.MAP)){
+                System.out.println("| древняя карта         |");
             }
-            if(Inventory.inventory.contains(items.NEWSPAPER)){
+            if(Inventory.inventory.containsKey(items.NEWSPAPER)){
                 System.out.println("| газета от " + timeStamp + "|");
             }
-        if(Inventory.inventory.contains(items.PLUSHY_WOLF)){
-            System.out.println("| плюшевая волчица      |");
+        if(Inventory.inventory.containsKey(items.PLUSHY_WOLF)){
+                System.out.println("|" + Game.YELLOW_BRIGHT + " плюшевая волчица *    "+ Game.ANSI_RESET +"| <- уникальный предмет");
         }
-            if(Inventory.inventory.contains(items.GOLDEN_BAR)){
+            if(Inventory.inventory.containsKey(items.GOLDEN_BAR)){
                 System.out.println("| золотой слиток        |");
             }
-            if(Inventory.inventory.contains(items.SILVER_WRING)){
+            if(Inventory.inventory.containsKey(items.SILVER_WRING)){
                 System.out.println("| серебряное кольцо     |");
             }
-            if(Inventory.inventory.contains(items.NECKLACE)){
+            if(Inventory.inventory.containsKey(items.NECKLACE)){
                 System.out.println("| ожерелье              |");
             }
-            if(Inventory.inventory.contains(items.OLD_DECLARATIONS)){
+            if(Inventory.inventory.containsKey(items.OLD_DECLARATIONS)){
                 System.out.println("| декларации            |");
             }
-            if(Inventory.inventory.contains(items.HAMMER)){
+            if(Inventory.inventory.containsKey(items.HAMMER)){
                 System.out.println("| молоток               |");
             }
-            if(Inventory.inventory.contains(items.CROWBAR)){
+            if(Inventory.inventory.containsKey(items.CROWBAR)){
                 System.out.println("| гвоздодер             |");
             }
-            if(Inventory.inventory.contains(items.PLIERS)){
+            if(Inventory.inventory.containsKey(items.PLIERS)){
                 System.out.println("| плоскогубцы           |");
             }
-            if(Inventory.inventory.contains(items.FLASHLIGHT)){
+            if(Inventory.inventory.containsKey(items.FLASHLIGHT)){
                 System.out.println("| фонарик               |");
             }
-            if(Inventory.inventory.contains(items.SPRAY)){
+            if(Inventory.inventory.containsKey(items.SPRAY)){
                 System.out.println("| спрей от насекомых    |");
             }
-            if(Inventory.inventory.contains(items.KNIFE)){
+            if(Inventory.inventory.containsKey(items.KNIFE)){
                 System.out.println("| нож                   |");
             }
-            if(Inventory.inventory.contains(items.POCKET_WATCH)){
+            if(Inventory.inventory.containsKey(items.POCKET_WATCH)){
                 System.out.println("| золотые карманные часы|");
             }
-            if(Inventory.inventory.contains(items.HAPPY_GREEN_VISIT_CARD)){
+            if(Inventory.inventory.containsKey(items.HAPPY_GREEN_VISIT_CARD)){
                 System.out.println("| визитка 'happy green' |");
             }
-            if(Inventory.inventory.contains(items.ROSE)){
+            if(Inventory.inventory.containsKey(items.ROSE)){
                 System.out.println("| роза                  |");
             }
-            if(Inventory.inventory.contains(items.TARP)){
-                System.out.println("| кусок брезента        |");
+            if(Inventory.inventory.containsKey(items.TARP)){
+                System.out.println("| кусок брезента        | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.NAILS)){
-                System.out.println("| гвозди                |");
+            if(Inventory.inventory.containsKey(items.NAILS)){
+                System.out.println("| гвозди                | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.STICK)){
-                System.out.println("| прочная палка         |");
+            if(Inventory.inventory.containsKey(items.STICK)){
+                System.out.println("| прочная палка         | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.DUCT_TAPE)){
-                System.out.println("| изолента              |");
+            if(Inventory.inventory.containsKey(items.DUCT_TAPE)){
+                System.out.println("| изолента              | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.OIL)){
-                System.out.println("| машинное масло        |");
+            if(Inventory.inventory.containsKey(items.OIL)){
+                System.out.println("| машинное масло        | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.SCRAP_METAL)){
-                System.out.println("| металлические обломки |");
+            if(Inventory.inventory.containsKey(items.SCRAP_METAL)){
+                System.out.println("| металлические обломки | \uD83D\uDD28");
             }
-            if(Inventory.inventory.contains(items.PAINT)){
-                System.out.println("| краска                |");
+            if(Inventory.inventory.containsKey(items.PAINT)){
+                System.out.println("| краска                | \uD83D\uDD28");
+            }
+            if(Inventory.inventory.containsKey(items.GLUE)){
+                System.out.println("| клей                  | \uD83D\uDD28");
+            }
+            if(Inventory.inventory.containsKey(items.PLANK)){
+                System.out.println("| Доска                 | \uD83D\uDD28");
             }
 
     }
@@ -114,9 +119,16 @@ public class Inventory {
         DUCT_TAPE,
         OIL,
         SCRAP_METAL,
-        PAINT
+        PAINT,
+        GLUE,
+        PLANK
     }
 
 
+// идеи для крафтов: (что вообще может скрафитить управляющий заводом?)
+// факел
+//
+//
+//
 
 }

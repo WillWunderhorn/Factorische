@@ -12,6 +12,7 @@ public class Game {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String GREEN_BRIGHT = "\033[0;92m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String YELLOW_BRIGHT = "\033[0;93m";
 
     public static synchronized Game getGame() {
         if(game == null){

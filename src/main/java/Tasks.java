@@ -9,7 +9,8 @@ public class Tasks {
     public enum tasksList{
         RING,
         WALLS,
-        TOY
+        TOY,
+        POCKET_MIRROR
     }
 
     static ArrayList<tasksList> tasks = new ArrayList<>();

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// ЕСЛИ КАРТОЧКА DISPOSABLE, ТО checkDisposable() ПИСАТЬ В КАЖДОЙ ОПЦИИ КРОМЕ openMenu() и noSuchACard()
+
 public class Cards {
     static Card_0 card_0;
     static Card_1 card_1;
@@ -27,7 +29,7 @@ public class Cards {
     }
 
     //=========================================================================
-    public static class Card_0 extends Cards {
+    public static class Card_0 extends Cards implements CardMethods{
 
         public static synchronized Cards getCard(){
             if(card_0 == null){
@@ -60,13 +62,7 @@ public class Cards {
             return description;
         }
 
-
-        public void checkDisposable(){
-            if (isDisposable == true){
-                deck.remove(this);
-            }
-        }
-
+        @Override
         public void selectOption() {
             System.out.println(this.description);
             System.out.println("0 - открыть меню");
@@ -88,17 +84,27 @@ public class Cards {
             checkDisposable();
         }
 
-        public void option1(){
+        @Override
+        public void option1() {
             Game.budget -= 200;
         }
+        @Override
         public void option2(){
             Game.rep_wrk -= 20;
             System.out.println("Работники на вас обиделись");
         }
+        @Override
         public void option3(){
             Menu.openMenu();
             System.out.println(deck.get(id));
         }
+
+        @Override
+        public void option4() {
+
+        }
+
+        @Override
         public void noSuchACard(){
             System.out.println("Такого варианта нет!");
             System.out.println(deck.get(id));
@@ -109,11 +115,19 @@ public class Cards {
             selectOption();
             return "";
         }
+
+        @Override
+        public void checkDisposable() {
+            if (isDisposable == true){
+                deck.remove(this);
+            }
+        }
+
     }
 
         //=========================================================================
 
-        static class Card_1 extends Cards {
+        static class Card_1 extends Cards implements CardMethods{
 
             public static synchronized Cards getCard(){
                 if(card_1 == null){
@@ -146,12 +160,7 @@ public class Cards {
                 return description;
             }
 
-            public void checkDisposable(){
-                if (isDisposable == true){
-                    deck.remove(this);
-                }
-            }
-
+            @Override
             public void selectOption() {
                 System.out.println(this.description);
                 System.out.println("0 - открыть меню\n1 - Принять (+500$)\n2 - Не принимать");
@@ -167,17 +176,29 @@ public class Cards {
                 checkDisposable();
             }
 
+            @Override
             public void option1(){
                 Game.budget += 500;
                 Game.rep_wrk += 10;;
             }
+
+            @Override
             public void option2(){
                 System.out.println("Вы вежливо отказались");
             }
+
+            @Override
             public void option3(){
                 Menu.openMenu();
                 System.out.println(deck.get(id));
             }
+
+            @Override
+            public void option4() {
+
+            }
+
+            @Override
             public void noSuchACard(){
                 System.out.println("Такого варианта нет!");
                 System.out.println(deck.get(id));
@@ -189,9 +210,16 @@ public class Cards {
                 return "";
             }
 
+            @Override
+            public void checkDisposable() {
+                if (isDisposable == true){
+                    deck.remove(this);
+                }
+            }
+
         }
         //=========================================================================
-        public static class Card_2 extends Cards {
+        public static class Card_2 extends Cards implements CardMethods{
 
             public static synchronized Cards getCard(){
                 if(card_2 == null){
@@ -224,12 +252,7 @@ public class Cards {
                 return description;
             }
 
-            public void checkDisposable(){
-                if (isDisposable == true){
-                    deck.remove(this);
-                }
-            }
-
+            @Override
             public void selectOption() {
                 System.out.println(this.description);
                 System.out.println("0 - открыть меню\n1 - Взять\n2 - Оставить");
@@ -243,47 +266,31 @@ public class Cards {
                     default: noSuchACard(); break;
                 }
             }
-// ЕСЛИ КАРТОЧКА DISPOSABLE, ТО checkDisposable() ПИСАТЬ В КАЖДОЙ ОПЦИИ КРОМЕ МЕНЮ
+
+            @Override
             public void option1(){
-                Inventory.inventory.add(Inventory.items.JOURNAL);
-                Inventory.inventory.add(Inventory.items.MAP);
-                Inventory.inventory.add(Inventory.items.NEWSPAPER);
-                Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
-
-                Inventory.inventory.add(Inventory.items.GOLDEN_BAR);
-                Inventory.inventory.add(Inventory.items.SILVER_WRING);
-                Inventory.inventory.add(Inventory.items.NECKLACE);
-                Inventory.inventory.add(Inventory.items.OLD_DECLARATIONS);
-
-                Inventory.inventory.add(Inventory.items.HAMMER);
-                Inventory.inventory.add(Inventory.items.CROWBAR);
-                Inventory.inventory.add(Inventory.items.PLIERS);
-                Inventory.inventory.add(Inventory.items.FLASHLIGHT);
-                Inventory.inventory.add(Inventory.items.SPRAY);
-                Inventory.inventory.add(Inventory.items.KNIFE);
-
-                Inventory.inventory.add(Inventory.items.POCKET_WATCH);
-                Inventory.inventory.add(Inventory.items.HAPPY_GREEN_VISIT_CARD);
-                Inventory.inventory.add(Inventory.items.ROSE);
-
-                Inventory.inventory.add(Inventory.items.TARP);
-                Inventory.inventory.add(Inventory.items.NAILS);
-                Inventory.inventory.add(Inventory.items.STICK);
-                Inventory.inventory.add(Inventory.items.DUCT_TAPE);
-                Inventory.inventory.add(Inventory.items.OIL);
-                Inventory.inventory.add(Inventory.items.SCRAP_METAL);
-                Inventory.inventory.add(Inventory.items.PAINT);
-
+                Cheats.giveAllItems();
                 checkDisposable();
             }
+
+            @Override
             public void option2(){
                 System.out.println("Вы прошли мимо");
                 checkDisposable();
             }
+
+            @Override
             public void option3(){
                 Menu.openMenu();
                 System.out.println(deck.get(id));
             }
+
+            @Override
+            public void option4() {
+
+            }
+
+            @Override
             public void noSuchACard(){
                 System.out.println("Такого варианта нет!");
                 System.out.println(deck.get(id));
@@ -294,9 +301,17 @@ public class Cards {
                 selectOption();
                 return "";
             }
+
+            @Override
+            public void checkDisposable() {
+                if (isDisposable == true){
+                    deck.remove(this);
+                }
+            }
+
         }
         //=========================================================================
-        static class Card_3 extends Cards {
+        static class Card_3 extends Cards implements CardMethods{
 
             public static synchronized Cards getCard(){
                 if(card_3 == null){
@@ -329,12 +344,7 @@ public class Cards {
                 return description;
             }
 
-            public void checkDisposable(){
-                if (isDisposable == true){
-                    deck.remove(this);
-                }
-            }
-
+            @Override
             public void selectOption() {
                 System.out.println(this.description);
                 System.out.println("0 - открыть меню\n1 - Хорошо");
@@ -349,14 +359,29 @@ public class Cards {
                 checkDisposable();
             }
 
+            @Override
             public void option1(){
                 Tasks.plushyToy();
                 checkDisposable();
             }
+
+            @Override
+            public void option2() {
+
+            }
+
+            @Override
             public void option3(){
                 Menu.openMenu();
                 System.out.println(deck.get(id));
             }
+
+            @Override
+            public void option4() {
+
+            }
+
+            @Override
             public void noSuchACard(){
                 System.out.println("Такого варианта нет!");
                 System.out.println(deck.get(id));
@@ -368,8 +393,15 @@ public class Cards {
                 return "";
             }
 
+            @Override
+            public void checkDisposable() {
+                if (isDisposable == true){
+                    deck.remove(this);
+                }
+            }
+
         }
 
-//        ==============================================================================================================
+        //=========================================================================
 
 }
