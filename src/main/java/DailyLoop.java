@@ -6,6 +6,13 @@ public class DailyLoop{
     public static void showInfo(){
         if(Game.day == 1){
             System.out.println("Day: " + Game.day + " | " + "efficiency: ???" + " | " + "manpower: ???\n");
+
+            System.out.println(
+                              "Rep_wrk: " + "[" + "▮".repeat((Game.rep_wrk)/10) + "▯".repeat(10-(Game.rep_wrk)/10) + "]"
+                            + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_civ)/10) + "▯".repeat(10-(Game.rep_civ)/10) + "]"
+                            + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_gov)/10) + "▯".repeat(10-(Game.rep_gov)/10) + "]"
+                            + "\n"
+            );
         }
         else if(Game.day != 0){
             System.out.println(
@@ -49,7 +56,7 @@ public class DailyLoop{
     public static void dailyLoop() throws InterruptedException {
         Cards.addAllCards();
         while (!GameOver.Over()){
-            TimeUnit.MILLISECONDS.sleep(500);
+//            TimeUnit.MILLISECONDS.sleep(500);
             Game.day++;
             MinMax.checkMinMax();
             DailyLoop.showInfo();

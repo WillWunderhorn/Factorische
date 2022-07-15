@@ -57,7 +57,7 @@ public class Menu {
             switch (menuActions){
                 case "0": closeMenu(); break;
                 case "t": openTasks(); break;
-                default: System.out.println("Такого варианта нет!");
+                default: System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
                 openMenu();
             }
 
@@ -91,7 +91,8 @@ public class Menu {
 
                 switch (askOption){
                     case "1": option1(); break;
-                    default: System.out.println("Такого варианта нет!");
+                    default: System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
+                    checkTask();
                 }
             }
         }
@@ -103,7 +104,8 @@ public class Menu {
     private static void option1() {
         Inventory.inventory.remove(Inventory.items.PLUSHY_WOLF);
         Tasks.wolfCompleted = true;
-        System.out.println("|Вы отдали волчицу...   |");
+        System.out.println("|Вы отдали волчицу...   |\n" +
+                           "|обновите список задач  |");
         Game.rep_civ += 10;
         Game.rep_wrk += 10;
     }
@@ -125,7 +127,7 @@ public class Menu {
         String tasksActions = sc.nextLine();
         switch (tasksActions){
             case "t": closeTask(); break;
-            default: System.out.println("Такого варианта нет!");
+            default: System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
             openTasks();
         }
     }

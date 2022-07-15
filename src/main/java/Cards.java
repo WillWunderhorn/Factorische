@@ -63,7 +63,7 @@ public class Cards {
 
         public void checkDisposable(){
             if (isDisposable == true){
-                deck.remove(this.id);
+                deck.remove(this);
             }
         }
 
@@ -148,7 +148,7 @@ public class Cards {
 
             public void checkDisposable(){
                 if (isDisposable == true){
-                    deck.remove(this.id);
+                    deck.remove(this);
                 }
             }
 
@@ -226,7 +226,7 @@ public class Cards {
 
             public void checkDisposable(){
                 if (isDisposable == true){
-                    deck.remove(this.id);
+                    deck.remove(this);
                 }
             }
 
@@ -312,7 +312,7 @@ public class Cards {
             Scanner sc = new Scanner(System.in);
 
             public Card_3() {
-                this.id = 1;
+                this.id = 3;
                 this.description = "Кажется кто то забыл свою игрушку на вашем заводе, не могли бы вы ее разыскать?";
                 this.isDisposable = true;
             }
@@ -331,7 +331,7 @@ public class Cards {
 
             public void checkDisposable(){
                 if (isDisposable == true){
-                    deck.remove(this.id);
+                    deck.remove(this);
                 }
             }
 
@@ -370,5 +370,6 @@ public class Cards {
 
         }
 
+//        ==============================================================================================================
 
 }
