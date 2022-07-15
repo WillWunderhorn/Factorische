@@ -1,37 +1,53 @@
 public class Cheats {
     public static void giveAllItems(){
-        Inventory.inventory.put(Inventory.items.JOURNAL, 1);
-        Inventory.inventory.put(Inventory.items.MAP, 1);
-        Inventory.inventory.put(Inventory.items.NEWSPAPER, 1);
-        Inventory.inventory.put(Inventory.items.PLUSHY_WOLF, 1);
+        Inventory.inventory.add(Inventory.items.JOURNAL);
+        Inventory.inventory.add(Inventory.items.NEWSPAPER);
+        Inventory.inventory.add(Inventory.items.MAP);
+        Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
 
-        Inventory.inventory.put(Inventory.items.GOLDEN_BAR, 1);
-        Inventory.inventory.put(Inventory.items.SILVER_WRING, 1);
-        Inventory.inventory.put(Inventory.items.NECKLACE, 1);
-        Inventory.inventory.put(Inventory.items.OLD_DECLARATIONS, 1);
+        Inventory.inventory.add(Inventory.items.GOLDEN_BAR);
+        Inventory.inventory.add(Inventory.items.SILVER_WRING);
+        Inventory.inventory.add(Inventory.items.NECKLACE);
+        Inventory.inventory.add(Inventory.items.OLD_DECLARATIONS);
 
-        Inventory.inventory.put(Inventory.items.HAMMER, 1);
-        Inventory.inventory.put(Inventory.items.CROWBAR, 1);
-        Inventory.inventory.put(Inventory.items.PLIERS, 1);
-        Inventory.inventory.put(Inventory.items.FLASHLIGHT, 1);
-        Inventory.inventory.put(Inventory.items.SPRAY, 1);
-        Inventory.inventory.put(Inventory.items.KNIFE, 1);
+        Inventory.inventory.add(Inventory.items.HAMMER);
+        Inventory.inventory.add(Inventory.items.CROWBAR);
+        Inventory.inventory.add(Inventory.items.PLIERS);
+        Inventory.inventory.add(Inventory.items.FLASHLIGHT);
+        Inventory.inventory.add(Inventory.items.SPRAY);
+        Inventory.inventory.add(Inventory.items.KNIFE);
 
-        Inventory.inventory.put(Inventory.items.POCKET_WATCH, 1);
-        Inventory.inventory.put(Inventory.items.HAPPY_GREEN_VISIT_CARD, 1);
-        Inventory.inventory.put(Inventory.items.ROSE, 1);
+        Inventory.inventory.add(Inventory.items.POCKET_WATCH);
+        Inventory.inventory.add(Inventory.items.HAPPY_GREEN_VISIT_CARD);
+        Inventory.inventory.add(Inventory.items.ROSE);
 
-        Inventory.inventory.put(Inventory.items.TARP, 10);
-        Inventory.inventory.put(Inventory.items.NAILS, 10);
-        Inventory.inventory.put(Inventory.items.STICK, 10);
-        Inventory.inventory.put(Inventory.items.DUCT_TAPE, 10);
-        Inventory.inventory.put(Inventory.items.OIL, 10);
-        Inventory.inventory.put(Inventory.items.SCRAP_METAL, 10);
-        Inventory.inventory.put(Inventory.items.PAINT, 10);
-        Inventory.inventory.put(Inventory.items.GLUE, 10);
-        Inventory.inventory.put(Inventory.items.PAINT, 10);
+        Inventory.inventory.add(Inventory.items.TARP);
+        Inventory.inventory.add(Inventory.items.NAILS);
+        Inventory.inventory.add(Inventory.items.STICK);
+        Inventory.inventory.add(Inventory.items.DUCT_TAPE);
+        Inventory.inventory.add(Inventory.items.OIL);
+        Inventory.inventory.add(Inventory.items.SCRAP_METAL);
+        Inventory.inventory.add(Inventory.items.PAINT);
+        Inventory.inventory.add(Inventory.items.GLUE);
+        Inventory.inventory.add(Inventory.items.PAINT);
     }
-    public void giveAllRequestedItems(){
-        Inventory.inventory.put(Inventory.items.PLUSHY_WOLF, 1);
+
+    public static void giveAllRequestedItems(){
+        Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
     }
+
+    public static void killPlayer(){
+        GameOver.die();
+    }
+
+    public static void goodBoss(){
+        Game.rep_wrk = 100;
+        Game.rep_gov = 100;
+        Game.rep_civ = 100;
+    }
+
+    public static void imRich(){
+        Game.budget += 1000000;
+    }
+
 }

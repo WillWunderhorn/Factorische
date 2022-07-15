@@ -1,7 +1,7 @@
 public class GameOver {
     public static boolean alive = true;
 
-    public void die(){
+    public static void die(){
         alive = false;
     }
 

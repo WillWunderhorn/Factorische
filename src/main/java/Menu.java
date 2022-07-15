@@ -1,3 +1,5 @@
+import Characters.Characters;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -78,13 +80,14 @@ public class Menu {
         System.out.println(
                         "|=========-***-=========|\n" );
     }
+//                                                   TASKS
 //======================================================================================================================
 
     public static void checkTask(){
         if (Tasks.tasks.contains(Tasks.tasksList.TOY) && Tasks.wolfCompleted == false){
             System.out.println(
                             "| Найти игрушку ☐       |");
-            if((Inventory.inventory.containsKey(Inventory.items.PLUSHY_WOLF))){
+            if((Inventory.inventory.contains(Inventory.items.PLUSHY_WOLF))){
                 System.out.println(
                                 "|1 - отдать             |\n" +
                                 "|=========-***-=========|");
@@ -99,7 +102,7 @@ public class Menu {
         }
         else if (Tasks.tasks.contains(Tasks.tasksList.TOY) && Tasks.wolfCompleted == true){
             System.out.println(
-                            "|Вы нашли волчицу! ☑    |");
+                            "|Вы нашли волчицу! ☑    |");
         }
     }
 
@@ -107,8 +110,12 @@ public class Menu {
         Inventory.inventory.remove(Inventory.items.PLUSHY_WOLF);
         Tasks.wolfCompleted = true;
         System.out.println(
-                        "|Вы отдали волчицу...   |\n" +
-                        "|обновите список задач  |");
+                        "Вы отдали игрушку законной владелице!\n");
+        Characters.Will.toyReaction();
+        Characters.Millie.toyReaction();
+        System.out.println();
+
+        openTasks();
         Game.rep_civ += 10;
         Game.rep_wrk += 10;
     }
@@ -140,6 +147,9 @@ public class Menu {
                         "список задач закрыт");
         openMenu();
     }
+
+
+//                                                CRAFT
 //======================================================================================================================
     public static void openCraft(){
         System.out.println(
@@ -169,31 +179,31 @@ public class Menu {
     }
 
     public static void showCraftables(){
-        if(Inventory.inventory.containsKey(Inventory.items.TARP)){
+        if(Inventory.inventory.contains(Inventory.items.TARP)){
             System.out.println("| кусок брезента        |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.NAILS)){
+        if(Inventory.inventory.contains(Inventory.items.NAILS)){
             System.out.println("| гвозди                |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.STICK)){
+        if(Inventory.inventory.contains(Inventory.items.STICK)){
             System.out.println("| прочная палка         |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.DUCT_TAPE)){
+        if(Inventory.inventory.contains(Inventory.items.DUCT_TAPE)){
             System.out.println("| изолента              |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.OIL)){
+        if(Inventory.inventory.contains(Inventory.items.OIL)){
             System.out.println("| машинное масло        |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.SCRAP_METAL)){
+        if(Inventory.inventory.contains(Inventory.items.SCRAP_METAL)){
             System.out.println("| металлические обломки |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.PAINT)){
+        if(Inventory.inventory.contains(Inventory.items.PAINT)){
             System.out.println("| краска                |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.GLUE)){
+        if(Inventory.inventory.contains(Inventory.items.GLUE)){
             System.out.println("| клей                  |");
         }
-        if(Inventory.inventory.containsKey(Inventory.items.PLANK)){
+        if(Inventory.inventory.contains(Inventory.items.PLANK)){
             System.out.println("| Доска                 |");
         }
     }
