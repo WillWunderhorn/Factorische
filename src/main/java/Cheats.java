@@ -2,8 +2,10 @@ public class Cheats {
     public static void giveAllItems(){
         Inventory.inventory.add(Inventory.items.JOURNAL);
         Inventory.inventory.add(Inventory.items.NEWSPAPER);
-        Inventory.inventory.add(Inventory.items.MAP);
-        Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
+        Inventory.inventory.add(Inventory.items.MAP_FIRST_PART);
+        Inventory.inventory.add(Inventory.items.MAP_SECOND_PART);
+//        Inventory.inventory.add(Inventory.items.MAP);
+//        Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
 
         Inventory.inventory.add(Inventory.items.GOLDEN_BAR);
         Inventory.inventory.add(Inventory.items.SILVER_WRING);
@@ -25,7 +27,7 @@ public class Cheats {
         Inventory.inventory.add(Inventory.items.NAILS);
         Inventory.inventory.add(Inventory.items.STICK);
         Inventory.inventory.add(Inventory.items.DUCT_TAPE);
-        Inventory.inventory.add(Inventory.items.OIL);
+        Inventory.inventory.add(Inventory.items.GASOLINE);
         Inventory.inventory.add(Inventory.items.SCRAP_METAL);
         Inventory.inventory.add(Inventory.items.PAINT);
         Inventory.inventory.add(Inventory.items.GLUE);

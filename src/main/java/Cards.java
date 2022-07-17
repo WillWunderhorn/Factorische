@@ -28,6 +28,7 @@ public class Cards {
         System.out.println(deck.get(randomCard));
     }
 
+
     //=========================================================================
     public static class Card_0 extends Cards implements CardMethods{
 
@@ -106,7 +107,7 @@ public class Cards {
 
         @Override
         public void noSuchACard(){
-            System.out.println("Такого варианта нет!");
+            System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
             System.out.println(deck.get(id));
         }
 
@@ -200,7 +201,7 @@ public class Cards {
 
             @Override
             public void noSuchACard(){
-                System.out.println("Такого варианта нет!");
+                System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
                 System.out.println(deck.get(id));
             }
 
@@ -270,6 +271,7 @@ public class Cards {
             @Override
             public void option1(){
                 Cheats.giveAllItems();
+                Cheats.giveAllRequestedItems();
                 checkDisposable();
             }
 
@@ -292,7 +294,7 @@ public class Cards {
 
             @Override
             public void noSuchACard(){
-                System.out.println("Такого варианта нет!");
+                System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
                 System.out.println(deck.get(id));
             }
 
@@ -383,7 +385,7 @@ public class Cards {
 
             @Override
             public void noSuchACard(){
-                System.out.println("Такого варианта нет!");
+                System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
                 System.out.println(deck.get(id));
             }
 
