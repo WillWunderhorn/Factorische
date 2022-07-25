@@ -16,6 +16,8 @@ public class Tasks {
     static ArrayList<tasksList> tasks = new ArrayList<>();
 
     public static void plushyToy(){
+        Cards.Card_8 card_8 = new Cards.Card_8();
+        Cards.deck.add(card_8);
         tasks.add(Tasks.tasksList.TOY);
         System.out.println(Game.GREEN_BRIGHT + "Добавлена новая задача!" + Game.ANSI_RESET);
     }

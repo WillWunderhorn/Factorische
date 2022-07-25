@@ -2,8 +2,6 @@ public class Cheats {
     public static void giveAllItems(){
         Inventory.inventory.add(Inventory.items.JOURNAL);
         Inventory.inventory.add(Inventory.items.NEWSPAPER);
-        Inventory.inventory.add(Inventory.items.MAP_FIRST_PART);
-        Inventory.inventory.add(Inventory.items.MAP_SECOND_PART);
 //        Inventory.inventory.add(Inventory.items.MAP);
 //        Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
 
@@ -23,6 +21,8 @@ public class Cheats {
         Inventory.inventory.add(Inventory.items.HAPPY_GREEN_VISIT_CARD);
         Inventory.inventory.add(Inventory.items.ROSE);
 
+        Inventory.inventory.add(Inventory.items.MAP_FIRST_PART);
+        Inventory.inventory.add(Inventory.items.MAP_SECOND_PART);
         Inventory.inventory.add(Inventory.items.TARP);
         Inventory.inventory.add(Inventory.items.NAILS);
         Inventory.inventory.add(Inventory.items.STICK);

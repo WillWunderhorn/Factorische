@@ -7,7 +7,6 @@ public class Game {
     public static int rep_gov;
     public static int efficiency;
     public static int manpower;
-    public static Menu.weather weather;
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String GREEN_BRIGHT = "\033[0;92m";

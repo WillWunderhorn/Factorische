@@ -4,12 +4,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public enum weather{
-        SUNNY,
-        FOG,
-        CLOUDY,
-        THUNDERSTORM,
-    }
     static Scanner sc = new Scanner(System.in);
 
     public static void getDayOfWeek(){
@@ -40,7 +34,6 @@ public class Menu {
         }
     }
 
-
     public static void openMenu(){
         System.out.println();
 
@@ -52,12 +45,14 @@ public class Menu {
         );
         getDayOfWeek();
         Menu.openInventory();
-            System.out.println("0 - закрыть меню\nt - список задач");
+            System.out.println("0 - закрыть меню\nt - список задач\nc - меню крафта");
             String menuActions = sc.nextLine();
             switch (menuActions){
                 case "0": closeMenu(); break;
                 case "t": openTasks(); break;
-//                case "c": openCraft(); break;
+                case "c": openCraft(); break;
+                case "с":
+                    System.out.println(Game.ANSI_RED + "Хоть это и русская 'c' но я открою тебе меню)" + Game.ANSI_RESET); openCraft(); break;
                 default: System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
                 openMenu();
             }
@@ -128,9 +123,9 @@ public class Menu {
         Tasks.wolfCompleted = true;
         System.out.println(
                 "Вы отдали игрушку законной владелице!\n");
-        wolfFound();
         Characters.Will.toyReaction();
         Characters.Millie.toyReaction();
+        wolfFound();
         System.out.println();
 
         Game.rep_civ += 10;
@@ -175,124 +170,125 @@ public class Menu {
 
 //                                                CRAFT
 //======================================================================================================================
-//    public static void openCraft(){
-//        System.out.println(
-//                        "|=======================|\n" +
-//                        "|==--   СОЗДАНИЕ:   --==|\n" +
-//                        "|=======================|\n" +
-//                        "|                       |\n" +
-//                        "|-РЕСУРСЫ ДЛЯ СОЗДАНИЯ:-|\n" +
-//                        "|                       |"
-//        );
-//
-//        showCraftables();
-//        System.out.println(
-//                        "|                       |");
-//        showPossibleCrafts();
-//
-//        System.out.println("c - закрыть меню крафта");
-//        String tasksActions = sc.nextLine();
-//        switch (tasksActions){
-//            case "c": openMenu(); break;
-//            default: System.out.println(Game.ANSI_RED + "Такого варианта нет! Можно только закрыть меню!" + Game.ANSI_RESET);
-//                openCraft();
-//        }
-//    }
-//    public static void closeCraft(){
-//        System.out.println("меню крафта закрыто");
-//        openMenu();
-//    }
+    public static void openCraft(){
+        System.out.println(
+                        "|=======================|\n" +
+                        "|==--   СОЗДАНИЕ:   --==|\n" +
+                        "|=======================|\n" +
+                        "|                       |\n" +
+                        "|-РЕСУРСЫ ДЛЯ СОЗДАНИЯ:-|\n" +
+                        "|                       |"
+        );
+
+        showCraftables();
+        System.out.println(
+                        "|                       |");
+        showPossibleCrafts();
+
+        System.out.println("c - закрыть меню крафта");
+        String tasksActions = sc.nextLine();
+        switch (tasksActions){
+            case "c": openMenu(); break;
+            case "с":
+                System.out.println(Game.ANSI_RED + "Хоть это и русская 'c' но я закрою тебе меню)" + Game.ANSI_RESET); openMenu(); break;
+            default: System.out.println(Game.ANSI_RED + "Такого варианта нет! Можно только закрыть меню!" + Game.ANSI_RESET);
+        }
+    }
+    public static void closeCraft(){
+        System.out.println("меню крафта закрыто");
+        openMenu();
+    }
 
 
-//    public static void showCraftables(){
-//        if(Inventory.inventory.contains(Inventory.items.TARP)){
-//            System.out.println("| кусок брезента        |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.NAILS)){
-//            System.out.println("| гвозди                |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.STICK)){
-//            System.out.println("| прочная палка         |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.DUCT_TAPE)){
-//            System.out.println("| изолента              |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.GASOLINE)){
-//            System.out.println("| машинное масло        |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.SCRAP_METAL)){
-//            System.out.println("| металлические обломки |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.PAINT)){
-//            System.out.println("| краска                |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.GLUE)){
-//            System.out.println("| клей                  |" + "\n|-----------------------|");
-//        }
-//        if(Inventory.inventory.contains(Inventory.items.PLANK)){
-//            System.out.println("| Доска                 |" + "\n|-----------------------|");
-//        }
-//        if (!Inventory.inventory.contains(Inventory.items.TARP) &&
-//            !Inventory.inventory.contains(Inventory.items.NAILS) &&
-//            !Inventory.inventory.contains(Inventory.items.STICK) &&
-//            !Inventory.inventory.contains(Inventory.items.DUCT_TAPE) &&
-//            !Inventory.inventory.contains(Inventory.items.GASOLINE) &&
-//            !Inventory.inventory.contains(Inventory.items.SCRAP_METAL) &&
-//            !Inventory.inventory.contains(Inventory.items.PAINT) &&
-//            !Inventory.inventory.contains(Inventory.items.GLUE) &&
-//            !Inventory.inventory.contains(Inventory.items.PLANK))
-//        {
-//            System.out.println(
-//                            "| нет ресурсов          |"
-//
-//            );
-//        }
-//    }
+    public static void showCraftables(){
+        if(Inventory.inventory.contains(Inventory.items.TARP)){
+            System.out.println("| кусок брезента        |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.NAILS)){
+            System.out.println("| гвозди                |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.STICK)){
+            System.out.println("| прочная палка         |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.DUCT_TAPE)){
+            System.out.println("| изолента              |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.GASOLINE)){
+            System.out.println("| машинное масло        |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.SCRAP_METAL)){
+            System.out.println("| металлические обломки |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.PAINT)){
+            System.out.println("| краска                |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.GLUE)){
+            System.out.println("| клей                  |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.PLANK)){
+            System.out.println("| Доска                 |" + "\n|-----------------------|");
+        }
+        if (!Inventory.inventory.contains(Inventory.items.TARP) &&
+            !Inventory.inventory.contains(Inventory.items.NAILS) &&
+            !Inventory.inventory.contains(Inventory.items.STICK) &&
+            !Inventory.inventory.contains(Inventory.items.DUCT_TAPE) &&
+            !Inventory.inventory.contains(Inventory.items.GASOLINE) &&
+            !Inventory.inventory.contains(Inventory.items.SCRAP_METAL) &&
+            !Inventory.inventory.contains(Inventory.items.PAINT) &&
+            !Inventory.inventory.contains(Inventory.items.GLUE) &&
+            !Inventory.inventory.contains(Inventory.items.PLANK))
+        {
+            System.out.println(
+                            "| нет ресурсов          |"
 
-//    public static void showPossibleCrafts() {
-//        System.out.println(
-//                        "|==-- МОЖНО СОЗДАТЬ --==|\n" +
-//                        "|                       |"
-//
-//        );
-//        canCraft();
-//    }
+            );
+        }
+    }
 
-//    public static void canCraft(){
-//        if(Inventory.inventory.contains(Inventory.items.MAP_FIRST_PART) && Inventory.inventory.contains(Inventory.items.MAP_SECOND_PART)){
-//            System.out.println(
-//                    "|древнюю карту          |"
-//            );
-//            System.out.println(
-//                    "|1 - склеить карту      |\n" +
-//                    "|                       |\n" +
-//                    "|=========-***-=========|");
-//
-//            String askOption = sc.nextLine();
-//            switch (askOption){
-//                case "1": craftMap(); break;
-//                default: System.out.println(Game.ANSI_RED + "Такого варианта нет! КЛЕЙ КАРТУ!" + Game.ANSI_RESET);
-//                openCraft();
-//            }
-//        }else {
-//            System.out.println(
-//                            "| Пока что ничего...    |\n" +
-//                            "|                       |\n" +
-//                            "|=========-***-=========|"
-//                    );
-//        }
-//
-//
-//
-//    }
+    public static void showPossibleCrafts() {
+        System.out.println(
+                        "|==-- МОЖНО СОЗДАТЬ --==|\n" +
+                        "|                       |"
+
+        );
+        canCraft();
+    }
+
+    public static void canCraft(){
+        if(Inventory.inventory.contains(Inventory.items.MAP_FIRST_PART) && Inventory.inventory.contains(Inventory.items.MAP_SECOND_PART)){
+            System.out.println(
+                    "|древнюю карту          |"
+            );
+            System.out.println(
+                    "|1 - склеить карту      |\n" +
+                    "|                       |\n" +
+                    "|=========-***-=========|");
+
+            String askOption = sc.nextLine();
+            switch (askOption){
+                case "1": craftMap(); break;
+                default: System.out.println(Game.ANSI_RED + "Такого варианта нет! КЛЕЙ КАРТУ!" + Game.ANSI_RESET);
+                openCraft();
+            }
+        }else {
+            System.out.println(
+                            "| Пока что ничего...    |\n" +
+                            "|                       |\n" +
+                            "|=========-***-=========|"
+                    );
+        }
+
+    }
 
     private static void craftMap() {
         Inventory.inventory.remove(Inventory.items.MAP_FIRST_PART);
         Inventory.inventory.remove(Inventory.items.MAP_SECOND_PART);
         Inventory.inventory.add(Inventory.items.MAP);
         System.out.println(
-                        "Вы скрафтили карту!"
+                        "Теперь у вас есть древняя карта!\nВозможно вскоре вы поймете где это место..."
         );
+        Cards.Card_5 card_5 = new Cards.Card_5();
+        Cards.deck.add(card_5);
     }
 
 }

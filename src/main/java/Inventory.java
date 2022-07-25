@@ -9,14 +9,8 @@ public class Inventory {
             if(Inventory.inventory.contains(items.JOURNAL) ){
                 System.out.println("| журнал                |");
             }
-            if(Inventory.inventory.contains(items.MAP_FIRST_PART)){
-                System.out.println("| кусок древней карты I |");
-            }
-            if(Inventory.inventory.contains(items.MAP_SECOND_PART)){
-                System.out.println("| кусок древней карты II|");
-            }
             if(Inventory.inventory.contains(items.MAP)){
-                System.out.println("| древняя карта         |");
+                System.out.println("|" + Game.YELLOW_BRIGHT + " древняя карта         " + Game.ANSI_RESET + "|");
             }
             if(Inventory.inventory.contains(items.NEWSPAPER)){
                 System.out.println("| газета от " + timeStamp + "|");
@@ -74,6 +68,12 @@ public class Inventory {
             }
         //--------------------------------------------------------------------------------------------------------------
 
+            if(Inventory.inventory.contains(items.MAP_FIRST_PART)){
+                System.out.println("| кусок древней карты I | \uD83D\uDD28");
+            }
+            if(Inventory.inventory.contains(items.MAP_SECOND_PART)){
+                System.out.println("| кусок древней карты II| \uD83D\uDD28");
+            }
             if(Inventory.inventory.contains(items.TARP)){
                 System.out.println("| кусок брезента        | \uD83D\uDD28");
             }
@@ -106,8 +106,6 @@ public class Inventory {
     public enum items {
         //      ======================== quests:
         JOURNAL,
-        MAP_FIRST_PART,
-        MAP_SECOND_PART,
         MAP,
         NEWSPAPER,
         PLUSHY_WOLF,
@@ -132,6 +130,8 @@ public class Inventory {
         ROSE,
 
         //      ======================== crafting:
+        MAP_FIRST_PART,
+        MAP_SECOND_PART,
         TARP,
         NAILS,
         STICK,
@@ -142,6 +142,8 @@ public class Inventory {
         GLUE,
         PLANK
     }
+
+
 
 
 // идеи для крафтов: (что вообще может скрафитить управляющий заводом?)

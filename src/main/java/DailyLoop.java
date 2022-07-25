@@ -10,7 +10,7 @@ public class DailyLoop{
             System.out.println(
                               "Rep_wrk: " + "[" + "▮".repeat((Game.rep_wrk)/10) + "▯".repeat(10-(Game.rep_wrk)/10) + "]"
                             + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_civ)/10) + "▯".repeat(10-(Game.rep_civ)/10) + "]"
-                            + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_gov)/10) + "▯".repeat(10-(Game.rep_gov)/10) + "]"
+                            + "\n" + "Rep_gov: " + "[" + "▮".repeat((Game.rep_gov)/10) + "▯".repeat(10-(Game.rep_gov)/10) + "]"
                             + "\n"
             );
         }
@@ -23,10 +23,11 @@ public class DailyLoop{
             System.out.println(
                     "\n" + "Rep_wrk: " + "[" + "▮".repeat((Game.rep_wrk)/10) + "▯".repeat(10-(Game.rep_wrk)/10) + "]"
                             + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_civ)/10) + "▯".repeat(10-(Game.rep_civ)/10) + "]"
-                            + "\n" + "Rep_civ: " + "[" + "▮".repeat((Game.rep_gov)/10) + "▯".repeat(10-(Game.rep_gov)/10) + "]"
+                            + "\n" + "Rep_gov: " + "[" + "▮".repeat((Game.rep_gov)/10) + "▯".repeat(10-(Game.rep_gov)/10) + "]"
                             + "\n"
             );
         }
+        System.out.println(Cards.deck.size());
     }
 
     public static void setManpower(){

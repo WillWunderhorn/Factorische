@@ -17,5 +17,8 @@ public class MinMax {
         if (Game.efficiency > 100){
             Game.efficiency = 100;
         }
+        if (Game.manpower > 100){
+            Game.manpower = 100;
+        }
     }
 }
