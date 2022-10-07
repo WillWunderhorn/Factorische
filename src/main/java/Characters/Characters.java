@@ -1,7 +1,8 @@
 package Characters;
 
 public class Characters {
-
+//                                                    WILLIAM
+//======================================================================================================================
     public class Will{
 
         public static void said() {
@@ -40,7 +41,19 @@ public class Characters {
             System.out.println(praising[randomReaction]);
         }
 
+        public static void gangReaction() {
+            String praising[] = {
+                    "\033[0;1m" + "Из ноздрей Уиллиама пошел дым" + "\033[0;0m",
+                    "\033[0;1m" + "Сквозь сжатые зубы Уиллиама просачивается дым" + "\033[0;0m",
+            };
+
+            int randomReaction = (int)Math.floor(Math.random() * praising.length);
+            System.out.println(praising[randomReaction]);
+        }
+
     }
+//                                                    MILLIE
+//======================================================================================================================
     public class Millie{
         public static void said() {
             String praising[] = {
@@ -79,7 +92,38 @@ public class Characters {
             int randomReaction = (int)Math.floor(Math.random() * praising.length);
             System.out.println(praising[randomReaction]);
         }
+        public static void gangReaction() {
+            String praising[] = {
+                    "\033[0;1m" + "Милли: Хах! я разорву их, если они придут снова\n"+
+                                  "в следующий раз позовите меня, хорошо?\n" +
+                                  "Вы: мне кажется ми еще рано умирать)\n" +
+                                  "Милли: Если наш завод сожгут, весь город останется без микрочипов...\n" + "\033[0;0m",
+
+                    "\033[0;1m" + "Милли рычит на дверь, плотно прижав уши" + "\033[0;0m"
+            };
+
+            int randomReaction = (int) Math.floor(Math.random() * praising.length);
+            System.out.println(praising[randomReaction]);
+        }
     }
+//                                                    VANESSA
+//======================================================================================================================
+    public class Vanessa{
+        public static void ringReaction() {
+            String praising[] = {
+                    "\033[0;1m" + "Ванесса: Спасибо большое\n" +
+                            "*Уиллиам поет в коридоре" + "\033[0;0m",
+                    "\033[0;1m" + "Ванесса: Спасибо, а Генри случайно не заходил?\n" +
+                            "*Том зафыркал" + "\033[0;0m",
+            };
+
+            int randomReaction = (int) Math.floor(Math.random() * praising.length);
+            System.out.println(praising[randomReaction]);
+        }
+    }
+
+//                                                    TOM
+//======================================================================================================================
     public class Tom{
 
 //        public static void said() {
@@ -108,7 +152,6 @@ public class Characters {
 //        }
         public static void ExcursionReaction() {
             String praising[] = {
-                    "\033[0;1m" + "Том: Поправил очки" + "\033[0;0m",
                     "\033[0;1m" + "Том: Задумчиво почесал рога, и посмотрел на какую-то схему" + "\033[0;0m",
                     "\033[0;1m" + "Том: Здорово, что детей с малых лет приучают к постижению сложных сфер,\nа не оставляют их наедине с тик-током или ютубом" + "\033[0;0m",
                     "\033[0;1m" + "Том: Мисс Мэй определенно заслуживает всего того уважения, которое она получает со стороны своих коллег и знакомых,\nи как только ей удается столько успевать?" + "\033[0;0m"

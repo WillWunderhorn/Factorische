@@ -14,6 +14,8 @@ public class Cards {
     static Card_6 card_6;
     static Card_7 card_7;
     static Card_8 card_8;
+    static Card_9 card_9;
+    static Card_10 card_10;
 
     public static ArrayList<Cards> deck = new ArrayList();
 
@@ -22,11 +24,15 @@ public class Cards {
         Card_1 card_1 = new Card_1();
         Card_3 card_3 = new Card_3();
         Card_6 card_6 = new Card_6();
+        Card_9 card_9 = new Card_9();
+        Card_10 card_10 = new Card_10();
 
         deck.add(card_0);
         deck.add(card_1);
         deck.add(card_3);
         deck.add(card_6);
+        deck.add(card_9);
+        deck.add(card_10);
     }
 
     public static void returnRandomCard() {
@@ -327,7 +333,7 @@ public class Cards {
         public Card_8() {
             this.id = 8;
             this.description = "=====================================\n" +
-                    "Работники жалуются, что манипулятор постоянно 'трещит'\n" +
+                    "Работники жалуются, что манипулятор постоянно 'трещит', чего обычно от него не ожидаешь,\n" +
                     "возможно потребуется дорогостоящий ремонт!";
             this.isDisposable = true;
         }
@@ -346,11 +352,11 @@ public class Cards {
         public void selectOption() {
             System.out.println(this.description + "\n");
             System.out.println("0 - открыть меню\n1 - Проверить станок самостоятельно");
-            if(Game.budget < 400){
-                System.out.println(Game.ANSI_RED + "2 - вызвать специалиста (-400$)" + Game.ANSI_RESET);
+            if(Game.budget < 1200){
+                System.out.println(Game.ANSI_RED + "2 - вызвать специалиста (-1200$)" + Game.ANSI_RESET);
             }
-            else if(Game.budget >= 400){
-                System.out.println("2 - вызвать специалиста (-400$)");
+            else if(Game.budget >= 1200){
+                System.out.println("2 - вызвать специалиста (-1200$)");
             }
 
             String askOption = sc.nextLine();
@@ -386,14 +392,15 @@ public class Cards {
         @Override
         public void option3(){
             Game.budget -= 50;
-            Game.rep_wrk += 3;
-            Game.rep_civ += 2;
+            Game.rep_wrk += 5;
+            Game.rep_civ += 3;
             System.out.println("=====================================\n" +
                     "Покапавшись в кишках манипулятора, через пять минут мастер с улыбкой сказал:\n" +
                     "Эта деталь тут лишняя! и протянул вам плюшевую игрушку.\n" +
                     "Она была внутри механизма... \n" +
                     "все посмеялись, и мастер уехал, взяв небольшую часть денег...");
             Inventory.inventory.add(Inventory.items.PLUSHY_WOLF);
+            checkDisposable();
         }
 
         @Override
@@ -419,7 +426,6 @@ public class Cards {
             }
         }
     }
-
 
     //=========================================================================
 
@@ -665,7 +671,7 @@ public class Cards {
                     "в дупле которого, по описанию на карте, что то спрятано.\n" +
                     "Засунув руку в дупло, вы обнаружили небольшой сундук,\n" +
                     "со ржавым замочком. На крышек было написано:\n" +
-                    "'WANDERHORN', что бы это ни значило\n" +
+                    "'WESTFETCH', что бы это ни значило\n" +
                     "вскрыв его ловким движением руки,\n" +
                     "вы обнаружили внутри серебряное кольцо и какие то старые бумаги.\n" +
                     "Судя по датам на этих документах, вряд ли правнуки их владельцев\n" +
@@ -908,4 +914,209 @@ static class Card_6 extends Cards implements CardMethods{
             }
         }
     }
+    //=========================================================================
+
+    static class Card_9 extends Cards implements CardMethods{
+
+        public static synchronized Cards getCard(){
+            if(card_9 == null){
+                Card_9 card_9 = new Card_9();
+                card_9.selectOption();
+            }
+            return card_9;
+        }
+
+        int id;
+        String description;
+        boolean isDisposable;
+        Scanner sc = new Scanner(System.in);
+
+        public Card_9() {
+            this.id = 9;
+            this.description = "=====================================\n" +
+                    "К вам в кабинет постучалась Ванесса, она рассказала,\n" +
+                    "что похоже где то оставила свое кольцо...\n" +
+                    "Это был ее подарок от Генри.\n" +
+                    "Ей бы очень не хотелось остаться без кольца и без уважения от последнего\n" +
+                    "Не могли бы вы помочь ей в поисках?";
+            this.isDisposable = true;
+        }
+
+        public int getId() {
+            return id;
+        }
+        public boolean isDisposable() {
+            return isDisposable;
+        }
+        public String getDescription() {
+            return description;
+        }
+
+        @Override
+        public void selectOption() {
+            System.out.println(this.description);
+            System.out.println("0 - открыть меню\n1 - Согласиться");
+
+            String askOption = sc.nextLine();
+
+            switch (askOption){
+                case "1": option1(); break;
+                case "0": option3(); break;
+                default: noSuchACard(); break;
+            }
+        }
+
+        @Override
+        public void option1(){
+            Tasks.silverRing();
+            checkDisposable();
+        }
+
+        @Override
+        public void option2() {
+
+        }
+
+        @Override
+        public void option3(){
+            Menu.openMenu();
+            System.out.println(this);
+        }
+
+        @Override
+        public void option4() {
+        }
+
+        @Override
+        public void noSuchACard(){
+            System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
+            System.out.println(this);
+        }
+
+        @Override
+        public String toString() {
+            selectOption();
+            return "";
+        }
+
+        @Override
+        public void checkDisposable() {
+            if (isDisposable == true){
+                deck.remove(this);
+            }
+        }
+    }
+
+    //=========================================================================
+
+    static class Card_10 extends Cards implements CardMethods{
+
+        public static synchronized Cards getCard(){
+            if(card_10 == null){
+                Card_10 card_10 = new Card_10();
+                card_10.selectOption();
+            }
+            return card_10;
+        }
+
+        int id;
+        String description;
+        boolean isDisposable;
+        Scanner sc = new Scanner(System.in);
+
+        public Card_10() {
+            this.id = 10;
+            this.description = "=====================================\n" +
+                    "В дверь постучали какие то люди,\n" +
+                    "они утверждают что они тут 'главные'\n" +
+                    "Они пообещали спалить к чертовой матери весь ваш завод,\n" +
+                    "если вы не заплатите им 2400$\n" +
+                    "Что делать?\n";
+            this.isDisposable = true;
+        }
+
+        public int getId() {
+            return id;
+        }
+        public boolean isDisposable() {
+            return isDisposable;
+        }
+        public String getDescription() {
+            return description;
+        }
+
+        @Override
+        public void selectOption() {
+            System.out.println(this.description);
+            System.out.println("0 - открыть меню\n2 - Послать их");
+            if(Game.budget < 2400){
+                System.out.println(Game.ANSI_RED + "1 - Заплатить (-2400$)" + Game.ANSI_RESET);
+            }
+            else if(Game.budget >= 2400){
+                System.out.println("1 - Заплатить (-2400$)");
+            }
+
+            String askOption = sc.nextLine();
+
+            switch (askOption){
+                case "1": option1(); break;
+                case "2": option2(); break;
+                case "0": option3(); break;
+                default: noSuchACard(); break;
+            }
+        }
+
+        @Override
+        public void option1(){
+            Game.budget -= 2400;
+            System.out.println("Вы трусливо отдали деньги своим обидчикам");
+            Game.rep_wrk -= 15;
+            Game.rep_civ -= 10;
+            checkDisposable();
+        }
+
+        @Override
+        public void option2() {
+            System.out.println(
+                    "Вы оборвали этих животных на середине слова\n" +
+                    "сказав, что если через 5 секунд они не уберутся с вашей территории\n" +
+                    "то их похороны будут стоить дороже\n");
+            Game.rep_wrk += 7;
+            Game.rep_civ += 5;
+            Characters.Millie.gangReaction();
+            Characters.Will.gangReaction();
+            checkDisposable();
+        }
+
+        @Override
+        public void option3(){
+            Menu.openMenu();
+            System.out.println(this);
+        }
+
+        @Override
+        public void option4() {
+        }
+
+        @Override
+        public void noSuchACard(){
+            System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
+            System.out.println(this);
+        }
+
+        @Override
+        public String toString() {
+            selectOption();
+            return "";
+        }
+
+        @Override
+        public void checkDisposable() {
+            if (isDisposable == true){
+                deck.remove(this);
+            }
+        }
+    }
+
+    //=========================================================================
 }

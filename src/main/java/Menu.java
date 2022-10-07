@@ -116,6 +116,33 @@ public class Menu {
                     "|                       |\n" +
                     "|=========-***-=========|");
         }
+
+        //=======================
+        if (Tasks.tasks.contains(Tasks.tasksList.RING) && Tasks.ringCompleted == false){
+            System.out.println(
+                    "| Найти кольцо ☐        |\n"+
+                            "|                       |\n" +
+                            "|=========-***-=========|");
+            noTasks = false;
+            if((Inventory.inventory.contains(Inventory.items.SILVER_WRING))){
+                System.out.println(
+                        "|2 - отдать             |\n" +
+                                "|=========-***-=========|");
+                String askOption = sc.nextLine();
+
+                switch (askOption){
+                    case "2": option2(); break;
+                    default: System.out.println(Game.ANSI_RED + "Такого варианта нет!" + Game.ANSI_RESET);
+                        checkTask();
+                }
+            }
+        }
+        else if (Tasks.tasks.contains(Tasks.tasksList.TOY) && Tasks.wolfCompleted == true){
+            System.out.println(
+                    "|Вы нашли колечко! ☑    |\n"+
+                            "|                       |\n" +
+                            "|=========-***-=========|");
+        }
     }
 
     private static void option1() {
@@ -132,6 +159,27 @@ public class Menu {
         Game.rep_wrk += 10;
     }
 
+    private static void option2() {
+        Inventory.inventory.remove(Inventory.items.SILVER_WRING);
+        Tasks.ringCompleted = true;
+        System.out.println(
+                "Вы отдали кольцо!\n");
+        Characters.Vanessa.ringReaction();
+        ringFound();
+        System.out.println();
+
+        Game.rep_civ += 10;
+        Game.rep_wrk += 10;
+    }
+
+    public static void isWolfCompleted(){
+        if(Tasks.wolfCompleted == true){
+            System.out.println(
+                    "|Вы нашли волчицу! ☑    |\n"
+            );
+        }
+    }
+
     public static void wolfFound(){
         System.out.println(
                         "|=======================|\n" +
@@ -140,8 +188,22 @@ public class Menu {
                         "|                       |\n" +
                         "|Вы нашли волчицу! ☑    |\n"+
                         "|                       |\n" +
+                        "|=========-***-=========|");
+    }
+
+    public static void ringFound(){
+        System.out.println(
+                "|=======================|\n" +
+                        "|==--  * ЗАДАЧИ: *  --==|\n" +
+                        "|=======================|\n" +
+                        "|                       |\n" +
+                        "|Вы нашли колечко! ☑    |\n"+
+                        "|                       |\n" +
                         "|=========-***-=========|\n");
     }
+
+//===================================================================
+
 
     public static void openTasks(){
         System.out.println(
@@ -177,7 +239,7 @@ public class Menu {
                         "|=======================|\n" +
                         "|                       |\n" +
                         "|-РЕСУРСЫ ДЛЯ СОЗДАНИЯ:-|\n" +
-                        "|                       |"
+                        "|---------*===*---------|"
         );
 
         showCraftables();
@@ -228,6 +290,12 @@ public class Menu {
         if(Inventory.inventory.contains(Inventory.items.PLANK)){
             System.out.println("| Доска                 |" + "\n|-----------------------|");
         }
+        if(Inventory.inventory.contains(Inventory.items.MAP_FIRST_PART)){
+            System.out.println("| кусок древней карты I |" + "\n|-----------------------|");
+        }
+        if(Inventory.inventory.contains(Inventory.items.MAP_SECOND_PART)){
+            System.out.println("| кусок древней карты II|" + "\n|-----------------------|");
+        }
         if (!Inventory.inventory.contains(Inventory.items.TARP) &&
             !Inventory.inventory.contains(Inventory.items.NAILS) &&
             !Inventory.inventory.contains(Inventory.items.STICK) &&
@@ -236,7 +304,10 @@ public class Menu {
             !Inventory.inventory.contains(Inventory.items.SCRAP_METAL) &&
             !Inventory.inventory.contains(Inventory.items.PAINT) &&
             !Inventory.inventory.contains(Inventory.items.GLUE) &&
-            !Inventory.inventory.contains(Inventory.items.PLANK))
+            !Inventory.inventory.contains(Inventory.items.PLANK) &&
+            !Inventory.inventory.contains(Inventory.items.MAP_FIRST_PART) &&
+            !Inventory.inventory.contains(Inventory.items.MAP_SECOND_PART)
+        )
         {
             System.out.println(
                             "| нет ресурсов          |"
